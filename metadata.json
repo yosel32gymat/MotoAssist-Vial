@@ -1,0 +1,6 @@
+{
+  "name": "Lector de Facturas Térmicas",
+  "description": "Aplicación para escanear facturas térmicas mediante cámara o archivo, extraer sus datos con IA, editarlos, guardarlos en Firebase y exportarlos a Excel.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

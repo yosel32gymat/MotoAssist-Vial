@@ -1,0 +1,67 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Funciones de validación globales duras
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidInvoice(data) {
+      return data.userId is string && 
+             data.userId == request.auth.uid &&
+             data.issuer is string && data.issuer.size() <= 256 &&
+             data.date is string && data.date.size() <= 64 &&
+             data.invoiceNumber is string && data.invoiceNumber.size() <= 128 &&
+             data.total is number &&
+             data.tax is number &&
+             data.paymentMethod is string && data.paymentMethod.size() <= 128 &&
+             data.imageUrl is string &&
+             data.createdAt is string;
+    }
+
+    function isValidMotorizado(data) {
+      return data.userId is string &&
+             data.userId == request.auth.uid &&
+             data.name is string && data.name.size() <= 128 &&
+             data.vehiclePlate is string && data.vehiclePlate.size() <= 32 &&
+             data.status is string && (data.status == "activo" || data.status == "inactivo") &&
+             data.createdAt is string;
+    }
+
+    // Reglas para la colección de facturas térmicas
+    match /invoices/{invoiceId} {
+      allow get: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.userId == request.auth.uid;
+      
+      allow create: if isSignedIn() && isValidInvoice(request.resource.data);
+      
+      allow update: if isSignedIn() && 
+                    resource.data.userId == request.auth.uid && 
+                    isValidInvoice(request.resource.data) &&
+                    request.resource.data.userId == resource.data.userId; // El propietario no puede cambiar
+                     
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    // Reglas para la colección de fleet motorizados
+    match /motorizados/{motorizadoId} {
+      allow get: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.userId == request.auth.uid;
+      
+      allow create: if isSignedIn() && isValidMotorizado(request.resource.data);
+      
+      allow update: if isSignedIn() &&
+                    resource.data.userId == request.auth.uid &&
+                    isValidMotorizado(request.resource.data) &&
+                    request.resource.data.userId == resource.data.userId;
+                    
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+  }
+}

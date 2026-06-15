@@ -1,0 +1,75 @@
+{
+  "entities": {
+    "Invoice": {
+      "title": "Invoice",
+      "description": "Data extracted from a scanned thermal invoice, with full fields representing motorized fleet expenses",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique ID of the document" },
+        "issuer": { "type": "string", "description": "Name of the issuer or store" },
+        "date": { "type": "string", "description": "Date of the invoice" },
+        "invoiceNumber": { "type": "string", "description": "Invoice number or identifier" },
+        "total": { "type": "number", "description": "Total amount paid" },
+        "tax": { "type": "number", "description": "Tax or VAT paid" },
+        "paymentMethod": { "type": "string", "description": "Payment method used" },
+        "items": {
+          "type": "array",
+          "description": "Items purchased",
+          "items": { "type": "object" }
+        },
+        "imageUrl": { "type": "string", "description": "Base64 encoded image or storage URL for the invoice" },
+        "userId": { "type": "string", "description": "UID of the owner user" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" },
+        "issuerRuc": { "type": "string", "description": "RUC validation for emisor" },
+        "issuerAddress": { "type": "string", "description": "Address of emisor" },
+        "invoiceType": { "type": "string", "description": "Type of invoice" },
+        "serial": { "type": "string", "description": "Document series number" },
+        "sucursal": { "type": "string", "description": "Branch code" },
+        "ptoFact": { "type": "string", "description": "Point of sale code" },
+        "receiverName": { "type": "string", "description": "Client name" },
+        "receiverRuc": { "type": "string", "description": "Client RUC/CIP" },
+        "receiverType": { "type": "string", "description": "Client receiver type" },
+        "subtotal": { "type": "number", "description": "Pre-tax amount sum" },
+        "itbms": { "type": "number", "description": "Total ITBMS" },
+        "desgloseItbms": {
+          "type": "array",
+          "description": "ITBMS breakdown items",
+          "items": { "type": "object" }
+        },
+        "qrUrl": { "type": "string", "description": "DGI e-invoice QR code URL" },
+        "accessKey": { "type": "string", "description": "CUFE access key string" },
+        "seller": { "type": "string", "description": "Seller name" },
+        "accountNumber": { "type": "string", "description": "Customer account ID" },
+        "comments": { "type": "string", "description": "Delivery address or comments" },
+        "motorizadoId": { "type": "string", "description": "Reference ID for the motorized rider" }
+      },
+      "required": ["userId", "createdAt"]
+    },
+    "Motorizado": {
+      "title": "Motorizado",
+      "description": "Motorized rider within the operations fleet who submits and is associated with invoices",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Document ID" },
+        "name": { "type": "string", "description": "Full name of the motorized rider" },
+        "vehiclePlate": { "type": "string", "description": "License plate of the rider's motorcycle" },
+        "vehicleModel": { "type": "string", "description": "Model of the motorcycle" },
+        "phone": { "type": "string", "description": "Rider contact number" },
+        "status": { "type": "string", "enum": ["activo", "inactivo"], "description": "Active status in fleet" },
+        "userId": { "type": "string", "description": "UID of the fleet administrator owner" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" }
+      },
+      "required": ["name", "vehiclePlate", "status", "userId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "Collection of scanned thermal invoices with fleet associations"
+    },
+    "motorizados/{motorizadoId}": {
+      "schema": "Motorizado",
+      "description": "Collection of motorized fleet riders"
+    }
+  }
+}
