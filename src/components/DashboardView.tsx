@@ -255,7 +255,7 @@ export default function DashboardView({ invoices, motorizados, incidents }: Dash
               </h3>
               <p className="text-[11px] text-slate-400 font-medium">Tendencia acumulada por fechas de instalación</p>
             </div>
-            <span className="p-1 px-2.5 text-[9px] font-black uppercase text-blue-400 bg-blue-900/200/15 rounded-full border border-blue-500/20">
+            <span className="p-1 px-2.5 text-[9px] font-black uppercase text-blue-400 bg-blue-500/15 rounded-full border border-blue-500/20">
               Línea Temporal 📉
             </span>
           </div>

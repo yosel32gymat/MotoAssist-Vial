@@ -269,21 +269,21 @@ export default function ReportsView({ invoices, motorizados }: ReportsViewProps)
                 <button
                   type="button"
                   onClick={() => setSelectedFields(allHeaders)}
-                  className="px-2.5 py-1 glass-panel/5 hover:glass-panel/10 border border-white/5 text-[10px] text-slate-300 rounded font-black cursor-pointer transition shadow-xxs"
+                  className="px-2.5 py-1 bg-white/5 hover:bg-white/10 border border-white/5 text-[10px] text-slate-300 rounded font-black cursor-pointer transition shadow-xxs"
                 >
                   Seleccionar Todo
                 </button>
                 <button
                   type="button"
                   onClick={() => setSelectedFields(["Establecimiento", "Nº Ticket/Factura", "Total Ticket", "Fecha Emisión"])}
-                  className="px-2.5 py-1 glass-panel/5 hover:glass-panel/10 border border-white/5 text-[10px] text-slate-300 rounded font-black cursor-pointer transition shadow-xxs"
+                  className="px-2.5 py-1 bg-white/5 hover:bg-white/10 border border-white/5 text-[10px] text-slate-300 rounded font-black cursor-pointer transition shadow-xxs"
                 >
                   Básico (Mínimo)
                 </button>
                 <button
                   type="button"
                   onClick={() => setSelectedFields([])}
-                  className="px-2.5 py-1 glass-panel/5 hover:glass-panel/10 border border-white/5 text-[10px] text-slate-300 rounded font-black cursor-pointer transition shadow-xxs"
+                  className="px-2.5 py-1 bg-white/5 hover:bg-white/10 border border-white/5 text-[10px] text-slate-300 rounded font-black cursor-pointer transition shadow-xxs"
                 >
                   Limpiar Todo
                 </button>
@@ -297,8 +297,8 @@ export default function ReportsView({ invoices, motorizados }: ReportsViewProps)
                       key={field} 
                       className={`flex items-center gap-2 p-2 rounded-lg border cursor-pointer select-none transition ${
                         isChecked 
-                          ? "bg-blue-900/200/10 border-blue-500/30 text-blue-300" 
-                          : "bg-slate-950 border-white/5 hover:glass-panel/5 text-slate-400"
+                          ? "bg-blue-500/10 border-blue-500/30 text-blue-300" 
+                          : "bg-slate-950 border-white/5 hover:bg-white/5 text-slate-400"
                       }`}
                     >
                       <input
@@ -326,7 +326,7 @@ export default function ReportsView({ invoices, motorizados }: ReportsViewProps)
           <button
             type="button"
             onClick={resetFilters}
-            className="flex items-center gap-1.5 px-3 py-1.5 glass-panel/5 hover:glass-panel/10 rounded-md text-xs font-bold text-slate-300 transition cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-md text-xs font-bold text-slate-300 transition cursor-pointer"
           >
             <RefreshCw className="h-3 w-3" />
             Limpiar Filtros
@@ -337,7 +337,7 @@ export default function ReportsView({ invoices, motorizados }: ReportsViewProps)
             disabled={filteredInvoices.length === 0}
             className={`flex items-center gap-1.5 px-3.5 py-1.5 text-white rounded-md text-xs font-bold transition cursor-pointer ${
               filteredInvoices.length === 0 
-                ? "glass-panel/5 cursor-not-allowed opacity-40 text-slate-500 border border-white/5" 
+                ? "bg-white/5 cursor-not-allowed opacity-40 text-slate-500 border border-white/5" 
                 : "bg-emerald-600 hover:bg-emerald-500"
             }`}
           >
@@ -453,7 +453,7 @@ export default function ReportsView({ invoices, motorizados }: ReportsViewProps)
                 </thead>
                 <tbody className="divide-y divide-white/5 font-semibold text-slate-200">
                   {filteredInvoices.map(inv => (
-                    <tr key={inv.id} className="hover:glass-panel/5 transition">
+                    <tr key={inv.id} className="hover:bg-white/5 transition">
                       <td className="p-2.5">
                         <p className="truncate max-w-[120px] font-bold text-white text-[11px]" title={inv.issuer}>{inv.issuer}</p>
                         <p className="text-[9px] text-slate-400 font-mono">#{inv.invoiceNumber}</p>

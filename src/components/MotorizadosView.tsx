@@ -249,7 +249,7 @@ export default function MotorizadosView({
             <button
               type="button"
               onClick={resetForm}
-              className="px-3.5 py-1.5 glass-panel/5 hover:glass-panel/10 rounded-md text-xs font-bold text-slate-300 transition cursor-pointer"
+              className="px-3.5 py-1.5 bg-white/5 hover:bg-white/10 rounded-md text-xs font-bold text-slate-300 transition cursor-pointer"
             >
               Cancelar
             </button>
@@ -266,7 +266,7 @@ export default function MotorizadosView({
       {/* LISTA EN REJILLA */}
       {motorizados.length === 0 ? (
         <div className="bg-slate-900/40 backdrop-blur-md rounded-xl border border-white/5 p-10 text-center space-y-3">
-          <div className="bg-blue-900/200/10 w-12 h-12 rounded-full flex items-center justify-center text-blue-400 mx-auto border border-blue-500/15">
+          <div className="bg-blue-500/10 w-12 h-12 rounded-full flex items-center justify-center text-blue-400 mx-auto border border-blue-500/15">
             <Users className="h-6 w-6" />
           </div>
           <div className="max-w-xs mx-auto space-y-1">
@@ -291,7 +291,7 @@ export default function MotorizadosView({
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3">
                     <div className={`p-2.5 rounded-lg text-slate-300 font-bold shrink-0 ${
-                      mot.status === "inactivo" ? "glass-panel/5" : "bg-blue-900/200/10 text-blue-400 border border-blue-500/15"
+                      mot.status === "inactivo" ? "bg-white/5" : "bg-blue-500/10 text-blue-400 border border-blue-500/15"
                     }`}>
                       <User className="h-4 w-4" />
                     </div>
@@ -303,7 +303,7 @@ export default function MotorizadosView({
 
                   <span className={`px-2 py-0.5 text-[9px] font-black uppercase rounded-full ${
                     mot.status === "inactivo" 
-                      ? "glass-panel/10 text-slate-400" 
+                      ? "bg-white/10 text-slate-400" 
                       : "bg-[#FFB300]/10 text-[#FFB300] border border-[#FFB300]/20"
                   }`}>
                     {mot.status}
@@ -362,7 +362,7 @@ export default function MotorizadosView({
                 <div className="flex justify-end gap-2.5 mt-3 border-t border-white/5 pt-2.5">
                   <button
                     onClick={() => setSelectedMotDetails(mot)}
-                    className="mr-auto p-1 px-2.5 text-blue-400 hover:text-blue-300 text-[10px] font-bold uppercase transition flex items-center gap-1 cursor-pointer bg-blue-900/200/10 hover:bg-blue-900/200/20 rounded-md border border-blue-500/15 text-center"
+                    className="mr-auto p-1 px-2.5 text-blue-400 hover:text-blue-300 text-[10px] font-bold uppercase transition flex items-center gap-1 cursor-pointer bg-blue-500/10 hover:bg-blue-500/20 rounded-md border border-blue-500/15 text-center"
                   >
                     <ClipboardList className="h-3 w-3" />
                     KPIs & Incidentes
@@ -454,7 +454,7 @@ export default function MotorizadosView({
               {/* Encabezado */}
               <div className="flex items-center justify-between border-b border-white/5 pb-3">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-blue-900/200/10 text-blue-400 border border-blue-500/15 rounded-lg shrink-0">
+                  <div className="p-2.5 bg-blue-500/10 text-blue-400 border border-blue-500/15 rounded-lg shrink-0">
                     <User className="h-5 w-5" />
                   </div>
                   <div>
@@ -468,7 +468,7 @@ export default function MotorizadosView({
                 </div>
                 <button 
                   onClick={() => setSelectedMotDetails(null)}
-                  className="p-1 px-2.5 glass-panel/5 hover:glass-panel/10 text-slate-300 rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer"
+                  className="p-1 px-2.5 bg-white/5 hover:bg-white/10 text-slate-300 rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -581,7 +581,7 @@ export default function MotorizadosView({
                                   ? "bg-rose-500/10 text-rose-355 border border-rose-500/20" 
                                   : inc.severity === "media" 
                                   ? "bg-amber-500/10 text-amber-355 border border-amber-500/20" 
-                                  : "bg-blue-900/200/10 text-blue-355 border border-blue-500/20"
+                                  : "bg-blue-500/10 text-blue-355 border border-blue-500/20"
                               }`}>
                                 {inc.severity}
                               </span>
@@ -677,7 +677,7 @@ export default function MotorizadosView({
                 <button
                   type="button"
                   onClick={() => setSelectedMotDetails(null)}
-                  className="px-4 py-2 glass-panel/5 hover:glass-panel/10 text-slate-200 text-[11px] font-extrabold rounded-lg transition cursor-pointer"
+                  className="px-4 py-2 bg-white/5 hover:bg-white/10 text-slate-200 text-[11px] font-extrabold rounded-lg transition cursor-pointer"
                 >
                   Cerrar Ventana
                 </button>
