@@ -114,9 +114,9 @@ export default function TicketEditForm({
 
   return (
     <div className="bg-white rounded-xl border border-[#E2E8F0] p-5 shadow-sm space-y-6">
-      <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+      <div className="flex items-center justify-between border-b border-blue-900/30 pb-3">
         <div>
-          <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
+          <h2 className="text-base font-bold text-slate-100 flex items-center gap-2">
             <Edit3 className="h-4.5 w-4.5 text-blue-600" />
             Editor Completo de Comprobante Térmico
           </h2>
@@ -124,19 +124,19 @@ export default function TicketEditForm({
         </div>
         <button 
           onClick={onCancel}
-          className="p-1 px-3 text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full transition font-semibold"
+          className="p-1 px-3 text-[10px] bg-blue-950/50 hover:bg-slate-200 text-slate-400 rounded-full transition font-semibold"
         >
           Cancelar
         </button>
       </div>
 
       {isScanning && (
-        <div className="flex flex-col items-center justify-center p-8 bg-slate-50 rounded-xl border border-slate-100 text-center space-y-3">
+        <div className="flex flex-col items-center justify-center p-8 glass-panel rounded-xl border border-blue-900/30 text-center space-y-3">
           <div className="relative">
             <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
           </div>
           <div>
-            <p className="text-xs font-bold text-slate-700">Gemini IA analizando ticket...</p>
+            <p className="text-xs font-bold text-slate-300">Gemini IA analizando ticket...</p>
             <p className="text-[11px] text-slate-400 mt-1 max-w-xs mx-auto">Reconociendo estructuración, desgloses, importes, CUFE y sucursales del ticket físico...</p>
           </div>
         </div>
@@ -151,17 +151,17 @@ export default function TicketEditForm({
       {!isScanning && (
         <div className="space-y-6">
           {activeImage && (
-            <div className="flex items-center gap-3.5 p-2.5 bg-slate-50 border border-slate-200/80 rounded-lg">
+            <div className="flex items-center gap-3.5 p-2.5 bg-blue-950/40 border border-blue-900/25/80 rounded-lg">
               <img src={activeImage} alt="Miniatura" className="w-10 h-12 object-cover rounded border border-slate-300 bg-white shadow-xs" referrerPolicy="no-referrer" />
               <div>
-                <p className="text-xs font-bold text-slate-700">Digitalización de Imagen Lista</p>
+                <p className="text-xs font-bold text-slate-300">Digitalización de Imagen Lista</p>
                 <p className="text-[10px] text-slate-400">La IA procesó este ticket. Edita libremente cualquier campo.</p>
               </div>
             </div>
           )}
 
           {/* CAMPOS EMISOR */}
-          <div className="space-y-3 p-3.5 bg-slate-50/50 rounded-xl border border-slate-150">
+          <div className="space-y-3 p-3.5 bg-blue-950/40/50 rounded-xl border border-blue-900/25">
             <h3 className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">Datos del Comercio (Emisor)</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-1 md:col-span-2">
@@ -170,7 +170,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.issuer}
                   onChange={(e) => setFormValues(p => ({ ...p, issuer: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-bold text-slate-800"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-bold text-slate-100"
                   placeholder="Ej. AUTO CENTRO, S.A."
                 />
               </div>
@@ -181,7 +181,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.issuerRuc || ""}
                   onChange={(e) => setFormValues(p => ({ ...p, issuerRuc: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
                   placeholder="Ej. 149204-1-659102"
                 />
               </div>
@@ -192,7 +192,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.issuerAddress || ""}
                   onChange={(e) => setFormValues(p => ({ ...p, issuerAddress: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
                   placeholder="Ej. Panama Brisas del Golf, Av. Principal"
                 />
               </div>
@@ -200,7 +200,7 @@ export default function TicketEditForm({
           </div>
 
           {/* CAMPOS DOCUMENTO */}
-          <div className="space-y-3 p-3.5 bg-slate-50/50 rounded-xl border border-slate-150">
+          <div className="space-y-3 p-3.5 bg-blue-950/40/50 rounded-xl border border-blue-900/25">
             <h3 className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">Parámetros del Documento</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-1">
@@ -212,7 +212,7 @@ export default function TicketEditForm({
                   type="date"
                   value={formValues.date}
                   onChange={(e) => setFormValues(p => ({ ...p, date: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-bold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-bold"
                 />
               </div>
 
@@ -222,7 +222,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.invoiceNumber}
                   onChange={(e) => setFormValues(p => ({ ...p, invoiceNumber: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-bold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-bold"
                   placeholder="Ej. T-90412"
                 />
               </div>
@@ -233,7 +233,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.serial || ""}
                   onChange={(e) => setFormValues(p => ({ ...p, serial: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
                   placeholder="Ej. SEC12204"
                 />
               </div>
@@ -244,7 +244,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.sucursal || ""}
                   onChange={(e) => setFormValues(p => ({ ...p, sucursal: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
                   placeholder="Ej. 0001 (Brisas)"
                 />
               </div>
@@ -255,7 +255,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.ptoFact || ""}
                   onChange={(e) => setFormValues(p => ({ ...p, ptoFact: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
                   placeholder="Ej. 02"
                 />
               </div>
@@ -269,7 +269,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.paymentMethod}
                   onChange={(e) => setFormValues(p => ({ ...p, paymentMethod: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
                   placeholder="Ej. Pago Contra Entrega / Tarjetas"
                 />
               </div>
@@ -277,7 +277,7 @@ export default function TicketEditForm({
           </div>
 
           {/* CAMPOS RECEPTOR */}
-          <div className="space-y-3 p-3.5 bg-slate-50/50 rounded-xl border border-slate-150">
+          <div className="space-y-3 p-3.5 bg-blue-950/40/50 rounded-xl border border-blue-900/25">
             <h3 className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">Comercializador y Comprador (Receptor)</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="space-y-1">
@@ -286,7 +286,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.receiverName || ""}
                   onChange={(e) => setFormValues(p => ({ ...p, receiverName: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
                   placeholder="Ej. Distribuidora Brisas"
                 />
               </div>
@@ -297,7 +297,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.receiverRuc || ""}
                   onChange={(e) => setFormValues(p => ({ ...p, receiverRuc: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
                   placeholder="Ej. 8-NT-9201"
                 />
               </div>
@@ -308,7 +308,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.seller || ""}
                   onChange={(e) => setFormValues(p => ({ ...p, seller: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                  className="w-full px-3 py-1.8 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
                   placeholder="Ej. VICTOR CRUZ"
                 />
               </div>
@@ -318,7 +318,7 @@ export default function TicketEditForm({
                 <select
                   value={formValues.invoiceType || ""}
                   onChange={(e) => setFormValues(p => ({ ...p, invoiceType: e.target.value }))}
-                  className="w-full px-3 py-1.8 text-xs bg-white border border-rose-200 focus:border-blue-600 rounded-lg focus:outline-none font-bold text-slate-700"
+                  className="w-full px-3 py-1.8 text-xs bg-white border border-rose-200 focus:border-blue-600 rounded-lg focus:outline-none font-bold text-slate-300"
                 >
                   <option value="">-- Seleccionar --</option>
                   <option value="CALL CENTER">CALL CENTER</option>
@@ -332,7 +332,7 @@ export default function TicketEditForm({
           </div>
 
           {/* OPERATIVO / FLOTA Y COMENTARIOS */}
-          <div className="space-y-3 p-3.5 bg-slate-50/50 rounded-xl border border-slate-150">
+          <div className="space-y-3 p-3.5 bg-blue-950/40/50 rounded-xl border border-blue-900/25">
             <h3 className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">Asignación Operativa de la Flota</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
@@ -358,7 +358,7 @@ export default function TicketEditForm({
                   type="text"
                   value={formValues.comments || ""}
                   onChange={(e) => setFormValues(p => ({ ...p, comments: e.target.value }))}
-                  className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                  className="w-full px-3 py-2 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
                   placeholder="Ej. Domicilio Brisas del Golf, calle principal"
                 />
               </div>
@@ -366,7 +366,7 @@ export default function TicketEditForm({
           </div>
 
           {/* DESGLOSE ARTÍCULOS */}
-          <div className="border bg-slate-50 p-4.5 rounded-xl border-slate-200/80 space-y-3">
+          <div className="border bg-blue-950/40 p-4.5 rounded-xl border-blue-900/25/80 space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase text-slate-400">
                 <Layers className="h-4 w-4" />
@@ -375,25 +375,25 @@ export default function TicketEditForm({
               <button
                 type="button"
                 onClick={handleAddItem}
-                className="text-xs font-bold text-blue-600 hover:text-blue-700 bg-white border border-slate-200 hover:bg-slate-50 px-2.5 py-1 rounded-md transition"
+                className="text-xs font-bold text-blue-600 hover:text-blue-700 glass-card hover:bg-blue-950/40 px-2.5 py-1 rounded-md transition"
               >
                 + Añadir Item
               </button>
             </div>
 
             {(!formValues.items || formValues.items.length === 0) ? (
-              <div className="text-center p-6 bg-white border border-dashed border-slate-200 rounded-lg text-slate-400 text-xs">
+              <div className="text-center p-6 bg-white border border-dashed border-blue-900/25 rounded-lg text-slate-400 text-xs">
                 Sin artículos. Añade uno con el botón superior.
               </div>
             ) : (
               <div className="space-y-2 max-h-[200px] overflow-y-auto">
                 {formValues.items.map((item, index) => (
-                  <div key={index} className="flex flex-wrap md:flex-nowrap items-center gap-2 p-2 bg-white rounded-lg border border-slate-150 shadow-xxs">
+                  <div key={index} className="flex flex-wrap md:flex-nowrap items-center gap-2 p-2 bg-white rounded-lg border border-blue-900/25 shadow-xxs">
                     <input
                       type="text"
                       value={item.name}
                       onChange={(e) => handleItemChange(index, "name", e.target.value)}
-                      className="flex-grow min-w-[120px] px-2 py-1 text-xs border border-slate-200 rounded font-semibold"
+                      className="flex-grow min-w-[120px] px-2 py-1 text-xs border border-blue-900/25 rounded font-semibold"
                       placeholder="Producto o Servicio"
                     />
                     <div className="w-16">
@@ -401,7 +401,7 @@ export default function TicketEditForm({
                         type="number"
                         value={item.quantity}
                         onChange={(e) => handleItemChange(index, "quantity", e.target.value)}
-                        className="w-full px-2 py-1 text-xs text-center border border-slate-200 rounded font-semibold text-slate-750"
+                        className="w-full px-2 py-1 text-xs text-center border border-blue-900/25 rounded font-semibold text-slate-750"
                         title="Cantidad"
                       />
                     </div>
@@ -411,11 +411,11 @@ export default function TicketEditForm({
                         step="0.01"
                         value={item.price}
                         onChange={(e) => handleItemChange(index, "price", e.target.value)}
-                        className="w-full px-2 py-1 text-xs text-center border border-slate-200 rounded font-semibold text-slate-750"
+                        className="w-full px-2 py-1 text-xs text-center border border-blue-900/25 rounded font-semibold text-slate-750"
                         title="Precio"
                       />
                     </div>
-                    <div className="w-20 font-mono text-xs font-bold text-slate-700 text-right pr-2">
+                    <div className="w-20 font-mono text-xs font-bold text-slate-300 text-right pr-2">
                       ${(item.total || 0).toFixed(2)}
                     </div>
                     <button
@@ -440,7 +440,7 @@ export default function TicketEditForm({
                 step="0.01"
                 value={formValues.tax}
                 onChange={(e) => handleTaxChange(Number(e.target.value))}
-                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
+                className="w-full px-3 py-2 text-xs glass-card rounded-lg focus:outline-none focus:border-blue-600 font-semibold"
               />
             </div>
 
@@ -451,19 +451,19 @@ export default function TicketEditForm({
                 step="0.01"
                 value={formValues.total}
                 onChange={(e) => handleTotalChange(Number(e.target.value))}
-                className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-600 font-black text-blue-700"
+                className="w-full px-3 py-2 text-xs bg-blue-950/40 border border-blue-900/25 rounded-lg focus:outline-none focus:border-blue-600 font-black text-blue-700"
               />
             </div>
           </div>
 
           {/* CLAVE DE ACCESO FACTURACIÓN ELECTRÓNICA */}
-          <div className="space-y-1.5 p-3.5 bg-slate-50/50 rounded-xl border border-slate-150">
+          <div className="space-y-1.5 p-3.5 bg-blue-950/40/50 rounded-xl border border-blue-900/25">
             <label className="text-[10px] font-bold font-mono text-slate-420 uppercase">CUFE / Clave Acceso Electrónica Autorizada</label>
             <input
               type="text"
               value={formValues.accessKey || ""}
               onChange={(e) => setFormValues(p => ({ ...p, accessKey: e.target.value }))}
-              className="w-full px-3 py-1.5 text-[10px] font-mono bg-white border border-slate-200 rounded-lg focus:outline-none font-semibold"
+              className="w-full px-3 py-1.5 text-[10px] font-mono glass-card rounded-lg focus:outline-none font-semibold"
               placeholder="Ej. 149204A2-92104-FE-2026-9210492104..."
             />
           </div>
@@ -478,7 +478,7 @@ export default function TicketEditForm({
             </button>
             <button
               onClick={onCancel}
-              className="px-5 py-2.8 bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200 rounded-lg font-bold text-xs"
+              className="px-5 py-2.8 bg-blue-950/50 hover:bg-slate-200 text-slate-400 border border-blue-900/25 rounded-lg font-bold text-xs"
             >
               Cancelar
             </button>

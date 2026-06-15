@@ -661,7 +661,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#02050f] via-[#091125] to-[#010307] flex flex-col font-sans text-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-[#010c1f] via-[#020d20] to-[#000810] flex flex-col font-sans text-slate-100">
       
       {/* BARRA ASIDE DE OPERACIONES (Sidemenu Modular) */}
       <div className="flex flex-col md:flex-row min-h-screen">
@@ -669,7 +669,7 @@ export default function App() {
         {/* SIDEBAR ADAPTATIVO PREMIUM (Con estilo Glass Azul Marino y Negro) */}
         <aside className="w-full md:w-64 bg-slate-950/50 backdrop-blur-lg text-white flex flex-col shrink-0 border-b border-white/5 md:border-r md:border-b-0 shadow-2xl relative z-10">
           <div className="p-6 border-b border-white/5 flex items-center gap-3">
-            <div className="p-1.5 bg-blue-500/10 rounded-xl flex items-center justify-center shadow-inner shrink-0 border border-white/10">
+            <div className="p-1.5 bg-blue-900/200/10 rounded-xl flex items-center justify-center shadow-inner shrink-0 border border-white/10">
               <LogoSVG className="h-10 w-10 text-[#FFB300] drop-shadow-[0_2px_8px_rgba(255,179,0,0.55)] shrink-0" />
             </div>
             <div>
@@ -859,12 +859,12 @@ export default function App() {
                     />
                   ) : (
                     /* SCANNER ZONE INPUT */
-                    <div className="bg-white rounded-xl border border-slate-200 p-6 md:p-8 shadow-sm space-y-6">
+                    <div className="glass-card rounded-xl p-6 md:p-8 space-y-6">
                       <div className="text-center max-w-sm mx-auto space-y-2">
-                        <span className="px-3 py-1.5 text-[9px] font-bold text-blue-700 bg-blue-50 rounded-full border border-blue-105 uppercase tracking-wide">
+                        <span className="px-3 py-1.5 text-[9px] font-bold text-blue-700 bg-blue-900/20 rounded-full border border-blue-700/30 uppercase tracking-wide">
                           Registro de Ventas IA
                         </span>
-                        <h3 className="text-base font-black text-slate-800 pt-1">Cargar Copia de Venta Instalada</h3>
+                        <h3 className="text-base font-black text-slate-100 pt-1">Cargar Copia de Venta Instalada</h3>
                         <p className="text-xs text-slate-400 font-medium leading-relaxed">
                           Arrastra la factura instalada por el motorizado, selecciona una foto o activa la cámara web para procesar la copia con Gemini IA y guardarla en tiempo real.
                         </p>
@@ -876,8 +876,8 @@ export default function App() {
                         onDrop={handleDrop}
                         className={`border-2 border-dashed rounded-xl p-8 text-center transition duration-200 flex flex-col items-center justify-center min-h-[220px] ${
                           dragOver 
-                            ? "border-blue-500 bg-blue-50/20" 
-                            : "border-slate-300 bg-slate-50 hover:bg-slate-100/70"
+                            ? "border-blue-500 bg-blue-900/20/20" 
+                            : "border-blue-700/40 bg-blue-900/10 hover:bg-blue-900/20"
                         }`}
                       >
                         <input 
@@ -888,17 +888,17 @@ export default function App() {
                           className="hidden" 
                         />
                         
-                        <div className="rounded-full bg-white p-3.5 shadow-sm border border-slate-200 text-blue-600 mb-4 cursor-pointer" onClick={() => fileInputRef.current?.click()}>
+                        <div className="rounded-full bg-blue-900/30 p-3.5 border border-blue-700/40 text-blue-400 mb-4 cursor-pointer" onClick={() => fileInputRef.current?.click()}>
                           <Upload className="h-6 w-6" />
                         </div>
                         
-                        <p className="text-xs font-bold text-slate-700">Arrastra tu ticket térmico aquí</p>
+                        <p className="text-xs font-bold text-slate-200">Arrastra tu ticket térmico aquí</p>
                         <p className="text-[10px] text-slate-400 mt-1 mb-5">JPEG, PNG, WEBP Soportados</p>
                         
                         <div className="flex flex-wrap items-center justify-center gap-3">
                           <button
                             onClick={() => fileInputRef.current?.click()}
-                            className="px-4 py-1.8 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 rounded-lg text-xs font-bold transition shadow-xs cursor-pointer"
+                            className="px-4 py-1.8 glass-panel border border-blue-900/30 text-slate-300 hover:border-blue-700/40 rounded-lg text-xs font-bold transition cursor-pointer"
                           >
                             Seleccionar Archivo
                           </button>
@@ -921,18 +921,18 @@ export default function App() {
                 <div className="lg:col-span-5 space-y-6">
                   
                   {invoices.length > 0 && (
-                    <div className="bg-white rounded-xl border border-slate-200 p-4.5 shadow-sm space-y-3">
+                    <div className="glass-card rounded-xl p-4.5 space-y-3">
                       <h3 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest pl-0.5">Resumen de Periodo</h3>
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="p-3 bg-blue-50/50 rounded-lg border border-blue-105">
+                        <div className="p-3 bg-blue-900/20 rounded-lg border border-blue-700/30">
                           <span className="text-[9px] font-bold text-slate-400 uppercase block leading-none">Monto Gasto</span>
-                          <span className="text-base font-black font-mono text-slate-800 block mt-1">
+                          <span className="text-base font-black font-mono text-slate-100 block mt-1">
                             ${invoices.reduce((a, b) => a + (b.total || 0), 0).toLocaleString("es-PA", { minimumFractionDigits: 2 })}
                           </span>
                         </div>
-                        <div className="p-3 bg-slate-50 rounded-lg border border-slate-150">
+                        <div className="p-3 bg-slate-50 rounded-lg border border-blue-900/25">
                           <span className="text-[9px] font-bold text-slate-400 uppercase block leading-none">Comprobantes</span>
-                          <span className="text-base font-black font-mono text-slate-800 block mt-1">
+                          <span className="text-base font-black font-mono text-slate-100 block mt-1">
                             {invoices.length} un.
                           </span>
                         </div>
@@ -940,11 +940,11 @@ export default function App() {
                     </div>
                   )}
 
-                  <div className="bg-white rounded-xl border border-slate-200 p-4.5 shadow-sm space-y-4">
-                    <div className="flex flex-col gap-2 border-b border-slate-100 pb-3">
+                  <div className="glass-card rounded-xl p-4.5 space-y-4">
+                    <div className="flex flex-col gap-2 border-b border-blue-900/30 pb-3">
                       <div className="flex items-center justify-between flex-wrap gap-2">
                         <div>
-                          <h3 className="font-bold text-slate-800 text-sm">Biblioteca de Tickets</h3>
+                          <h3 className="font-bold text-slate-100 text-sm">Biblioteca de Tickets</h3>
                           <p className="text-[10px] text-slate-400">Total registrados ({invoices.length})</p>
                         </div>
 
@@ -973,27 +973,27 @@ export default function App() {
                       </div>
 
                       {showExportFieldsConfig && invoices.length > 0 && (
-                        <div className="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-2 animate-fade-in">
+                        <div className="mt-3 p-3 glass-panel rounded-lg border border-blue-900/30 space-y-2 animate-fade-in">
                           <p className="text-[9px] font-extrabold uppercase text-slate-400 tracking-wider">Configurar Columnas de Exportación ({selectedExportFields.length} seleccionadas)</p>
                           <div className="flex flex-wrap gap-1.5 pb-2">
                             <button
                               type="button"
                               onClick={() => setSelectedExportFields(EXPORT_COLUMNS)}
-                              className="px-2 py-0.5 bg-white border border-slate-200 hover:bg-slate-100 text-[8.5px] font-bold text-slate-600 rounded"
+                              className="px-2 py-0.5 glass-panel border border-blue-900/30 hover:border-blue-700/40 text-[8.5px] font-bold text-slate-400 rounded"
                             >
                               Todo
                             </button>
                             <button
                               type="button"
                               onClick={() => setSelectedExportFields(["Establecimiento", "Tipo Factura", "Nº Ticket/Factura", "Asignado a (Motorizado)", "Total Ticket", "Fecha Emisión"])}
-                              className="px-2 py-0.5 bg-white border border-slate-200 hover:bg-slate-100 text-[8.5px] font-bold text-slate-600 rounded"
+                              className="px-2 py-0.5 glass-panel border border-blue-900/30 hover:border-blue-700/40 text-[8.5px] font-bold text-slate-400 rounded"
                             >
                               Básico
                             </button>
                             <button
                               type="button"
                               onClick={() => setSelectedExportFields([])}
-                              className="px-2 py-0.5 bg-white border border-slate-200 hover:bg-slate-100 text-[8.5px] font-bold text-slate-600 rounded"
+                              className="px-2 py-0.5 glass-panel border border-blue-900/30 hover:border-blue-700/40 text-[8.5px] font-bold text-slate-400 rounded"
                             >
                               Limpiar
                             </button>
@@ -1005,7 +1005,7 @@ export default function App() {
                                 <label
                                   key={col}
                                   className={`flex items-center gap-1.5 p-1.5 text-[9.5px] rounded border cursor-pointer select-none transition ${
-                                    isSel ? "bg-blue-50 text-blue-700 border-blue-250 font-bold" : "bg-white border-slate-200 text-slate-500"
+                                    isSel ? "bg-blue-900/25 text-blue-300 border-blue-700/40 font-bold" : "glass-panel border-blue-900/25 text-slate-400"
                                   }`}
                                 >
                                   <input
@@ -1040,7 +1040,7 @@ export default function App() {
                           <Receipt className="h-5 w-5" />
                         </div>
                         <div className="max-w-xs mx-auto space-y-1">
-                          <p className="text-xs font-bold text-slate-700">Sin copias registradas</p>
+                          <p className="text-xs font-bold text-slate-200">Sin copias registradas</p>
                           <p className="text-[10.5px] text-slate-400 leading-normal font-semibold">
                             Toma una captura o sube la factura de ventas instaladas por los motorizados para sincronizarlas en tu panel.
                           </p>
@@ -1056,18 +1056,18 @@ export default function App() {
                               onClick={() => setSelectedInvoiceForView(inv)}
                               className={`p-3 rounded-lg border transition duration-150 cursor-pointer flex items-center justify-between gap-3 text-left ${
                                 isSelected 
-                                  ? "bg-blue-50/50 border-blue-200 shadow-xxs" 
-                                  : "bg-white border-slate-200/80 hover:border-slate-300 hover:bg-slate-50/40"
+                                  ? "bg-blue-900/20 border-blue-200 shadow-xxs" 
+                                  : "glass-card border-blue-900/30 hover:border-blue-700/40"
                               }`}
                             >
                               <div className="flex items-center gap-3 overflow-hidden">
                                 <div className={`rounded-lg p-2 ${
-                                  isSelected ? "bg-blue-105 text-blue-700" : "bg-slate-50 text-slate-500 border border-slate-150"
+                                  isSelected ? "bg-blue-900/40 text-blue-300" : "bg-slate-50 text-slate-500 border border-blue-900/25"
                                 }`}>
                                   <FileText className="h-4 w-4" />
                                 </div>
                                 <div className="overflow-hidden">
-                                  <p className="text-xs font-black text-slate-800 truncate" title={inv.issuer}>{inv.issuer}</p>
+                                  <p className="text-xs font-black text-slate-100 truncate" title={inv.issuer}>{inv.issuer}</p>
                                   <p className="text-[10px] text-slate-400 mt-0.5 font-bold space-x-1">
                                     <span>{inv.date}</span>
                                     <span>•</span>
@@ -1078,9 +1078,9 @@ export default function App() {
 
                               <div className="flex items-center gap-2 shrink-0">
                                 <div className="text-right">
-                                  <p className="text-xs font-bold font-mono text-slate-900">${(inv.total || 0).toFixed(2)}</p>
+                                  <p className="text-xs font-bold font-mono text-white">${(inv.total || 0).toFixed(2)}</p>
                                   {inv.motorizadoId ? (
-                                    <span className="text-[8px] bg-blue-50 text-blue-600 font-bold px-1 rounded block mt-0.5 uppercase">flota</span>
+                                    <span className="text-[8px] bg-blue-900/20 text-blue-600 font-bold px-1 rounded block mt-0.5 uppercase">flota</span>
                                   ) : (
                                     <span className="text-[8px] text-slate-400 font-bold block mt-0.5">S/Chofer</span>
                                   )}
@@ -1133,26 +1133,26 @@ export default function App() {
 
       {originalImageInModal && (
         <div 
-          className="fixed inset-0 bg-slate-900/80 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-fade-in"
+          className="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 z-50 animate-fade-in"
           onClick={() => setOriginalImageInModal(null)}
         >
           <div 
-            className="bg-white rounded-xl max-w-xl w-full p-4 space-y-4 border border-slate-200 shadow-xl relative"
+            className="glass-card rounded-xl max-w-xl w-full p-4 space-y-4 shadow-xl relative"
             onClick={e => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b pb-2">
-              <h3 className="font-extrabold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <h3 className="font-extrabold text-slate-100 text-xs uppercase tracking-wider flex items-center gap-1.5">
                 <FolderOpen className="h-4.5 w-4.5 text-blue-600" />
                 <span>Factura Original Registrada</span>
               </h3>
               <button 
                 onClick={() => setOriginalImageInModal(null)}
-                className="p-1 text-slate-400 hover:text-slate-600 font-bold"
+                className="p-1 text-slate-400 hover:text-slate-400 font-bold"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <div className="flex justify-center max-h-[70vh] overflow-y-auto bg-slate-50 rounded-lg p-2 border border-slate-200">
+            <div className="flex justify-center max-h-[70vh] overflow-y-auto glass-panel rounded-lg p-2">
               <img 
                 src={originalImageInModal} 
                 alt="Factura Original" 
@@ -1163,7 +1163,7 @@ export default function App() {
             <div className="text-right">
               <button
                 onClick={() => setOriginalImageInModal(null)}
-                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition"
+                className="px-4 py-2 glass-panel hover:border-blue-700/40 text-slate-300 text-xs font-bold rounded-lg transition"
               >
                 Cerrar Imagen
               </button>
@@ -1175,12 +1175,12 @@ export default function App() {
       {/* MODAL DE CONFIRMACIÓN CUSTOM */}
       {confirmState?.isOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fade-in" id="custom-confirm-modal">
-          <div className="bg-white rounded-xl border border-slate-200 p-6 max-w-sm w-full shadow-2xl space-y-4">
+          <div className="glass-card rounded-xl p-6 max-w-sm w-full space-y-4">
             <div className="flex items-center gap-3">
               <div className={`p-2.5 rounded-full ${confirmState.variant === 'danger' ? 'bg-rose-100 text-rose-600' : 'bg-amber-100 text-amber-600'}`}>
                 <AlertTriangle className="h-5 w-5" />
               </div>
-              <h3 className="font-extrabold text-slate-900 text-sm">{confirmState.title}</h3>
+              <h3 className="font-extrabold text-white text-sm">{confirmState.title}</h3>
             </div>
             <p className="text-slate-650 text-xs font-semibold leading-normal">
               {confirmState.message}

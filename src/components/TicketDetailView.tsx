@@ -39,16 +39,16 @@ export default function TicketDetailView({
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-6 md:p-8 shadow-sm space-y-6">
+    <div className="glass-card rounded-xl p-6 md:p-8 shadow-sm space-y-6">
       
       {/* CABECERA */}
-      <div className="flex items-center justify-between border-b border-slate-150 pb-4">
+      <div className="flex items-center justify-between border-b border-blue-900/25 pb-4">
         <div className="flex items-center gap-2.5">
-          <div className="bg-blue-50 text-blue-600 p-2.5 rounded-lg border border-blue-105 shrink-0">
+          <div className="bg-blue-900/20 text-blue-600 p-2.5 rounded-lg border border-blue-700/30 shrink-0">
             <FileText className="h-5 w-5" />
           </div>
           <div>
-            <h3 className="font-bold text-slate-800 text-sm md:text-base leading-tight truncate max-w-[200px]" title={invoice.issuer}>
+            <h3 className="font-bold text-slate-100 text-sm md:text-base leading-tight truncate max-w-[200px]" title={invoice.issuer}>
               {invoice.issuer}
             </h3>
             <p className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase mt-1">ID: {invoice.id?.substring(0, 12)}</p>
@@ -56,7 +56,7 @@ export default function TicketDetailView({
         </div>
         <button 
           onClick={onClose}
-          className="p-1 px-3 text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full transition font-semibold cursor-pointer"
+          className="p-1 px-3 text-[10px] bg-blue-950/50 hover:bg-slate-200 text-slate-400 rounded-full transition font-semibold cursor-pointer"
         >
           Cerrar Vista
         </button>
@@ -69,61 +69,61 @@ export default function TicketDetailView({
           <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-0.5">Metadatos de la Factura</h4>
           
           <div className="grid grid-cols-2 gap-3">
-            <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-lg">
+            <div className="p-3 bg-blue-950/40 border border-blue-900/25/80 rounded-lg">
               <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Comercio RUC</span>
-              <p className="text-xs font-bold text-slate-700 mt-0.5 truncate">{invoice.issuerRuc || "No Registrado"}</p>
+              <p className="text-xs font-bold text-slate-300 mt-0.5 truncate">{invoice.issuerRuc || "No Registrado"}</p>
             </div>
 
-            <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-lg">
+            <div className="p-3 bg-blue-950/40 border border-blue-900/25/80 rounded-lg">
               <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider font-semibold">Tipo Documento</span>
-              <p className="text-xs font-bold text-slate-700 mt-0.5 truncate" title={invoice.invoiceType}>{invoice.invoiceType || "Factura de Venta"}</p>
+              <p className="text-xs font-bold text-slate-300 mt-0.5 truncate" title={invoice.invoiceType}>{invoice.invoiceType || "Factura de Venta"}</p>
             </div>
 
-            <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-lg">
+            <div className="p-3 bg-blue-950/40 border border-blue-900/25/80 rounded-lg">
               <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Fecha de Emisión</span>
-              <p className="text-xs font-bold text-slate-700 mt-0.5">{invoice.date}</p>
+              <p className="text-xs font-bold text-slate-300 mt-0.5">{invoice.date}</p>
             </div>
 
-            <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-lg">
+            <div className="p-3 bg-blue-950/40 border border-blue-900/25/80 rounded-lg">
               <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Nº Factura / Ticket</span>
-              <p className="text-xs font-bold text-slate-700 mt-0.5 truncate" title={invoice.invoiceNumber}>{invoice.invoiceNumber}</p>
+              <p className="text-xs font-bold text-slate-300 mt-0.5 truncate" title={invoice.invoiceNumber}>{invoice.invoiceNumber}</p>
             </div>
 
-            <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-lg">
+            <div className="p-3 bg-blue-950/40 border border-blue-900/25/80 rounded-lg">
               <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Serie / Consecutivo</span>
-              <p className="text-xs font-bold text-slate-700 mt-0.5">{invoice.serial || "S/S"}</p>
+              <p className="text-xs font-bold text-slate-300 mt-0.5">{invoice.serial || "S/S"}</p>
             </div>
 
-            <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-lg">
+            <div className="p-3 bg-blue-950/40 border border-blue-900/25/80 rounded-lg">
               <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Lugar: Sucursal (Caja)</span>
-              <p className="text-xs font-bold text-slate-700 mt-0.5">Suc {invoice.sucursal || "001"} - Caja {invoice.ptoFact || "01"}</p>
+              <p className="text-xs font-bold text-slate-300 mt-0.5">Suc {invoice.sucursal || "001"} - Caja {invoice.ptoFact || "01"}</p>
             </div>
 
-            <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-lg col-span-full">
+            <div className="p-3 bg-blue-950/40 border border-blue-900/25/80 rounded-lg col-span-full">
               <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Cliente Receptor</span>
-              <p className="text-xs font-bold text-slate-700 mt-0.5">
+              <p className="text-xs font-bold text-slate-300 mt-0.5">
                 {invoice.receiverName || "Consumidor Final"} {invoice.receiverRuc ? `(RUC/CIP: ${invoice.receiverRuc})` : ""}
               </p>
             </div>
 
-            <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-lg">
+            <div className="p-3 bg-blue-950/40 border border-blue-900/25/80 rounded-lg">
               <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Atendido por (Vendedor)</span>
-              <p className="text-xs font-bold text-slate-700 mt-0.5 truncate">{invoice.seller || "No Especificado"}</p>
+              <p className="text-xs font-bold text-slate-300 mt-0.5 truncate">{invoice.seller || "No Especificado"}</p>
             </div>
 
-            <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-lg">
+            <div className="p-3 bg-blue-950/40 border border-blue-900/25/80 rounded-lg">
               <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Método de Pago</span>
-              <p className="text-xs font-bold text-slate-700 mt-0.5 font-sans flex items-center gap-1.5">
+              <p className="text-xs font-bold text-slate-300 mt-0.5 font-sans flex items-center gap-1.5">
                 <CreditCard className="h-3.5 w-3.5 text-slate-400" />
                 {invoice.paymentMethod || "Efectivo"}
               </p>
             </div>
 
             {invoice.motorizadoId && (
-              <div className="p-3 bg-blue-50/40 border border-blue-100 rounded-lg col-span-full flex items-center justify-between">
+              <div className="p-3 bg-blue-900/20/40 border border-blue-100 rounded-lg col-span-full flex items-center justify-between">
                 <div>
                   <span className="text-[9px] uppercase font-bold text-blue-500 tracking-wider block">Chofer de Flota Asignado</span>
-                  <span className="text-xs font-bold text-slate-800 mt-0.5 inline-flex items-center gap-1">
+                  <span className="text-xs font-bold text-slate-100 mt-0.5 inline-flex items-center gap-1">
                     <Users className="h-3.5 w-3.5 text-blue-500" />
                     {getMotorizadoName(invoice.motorizadoId)}
                   </span>
@@ -137,7 +137,7 @@ export default function TicketDetailView({
             )}
 
             {invoice.comments && (
-              <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-lg col-span-full">
+              <div className="p-3 bg-blue-950/40 border border-blue-900/25/80 rounded-lg col-span-full">
                 <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Comentarios de Entrega / Dirección Flete</span>
                 <p className="text-xs text-slate-650 mt-0.5 leading-relaxed font-semibold">{invoice.comments}</p>
               </div>
@@ -164,8 +164,8 @@ export default function TicketDetailView({
 
             <div className="pt-2 text-center select-text">
               <p className="font-extrabold text-[12px] uppercase select-none tracking-tight">{invoice.issuer || "SUMINISTROS IND."}</p>
-              <p className="text-[9px] font-semibold text-slate-600 mt-0.5">{invoice.issuerAddress || "CIUDAD DE PANAMÁ"}</p>
-              <p className="text-[9px] font-bold text-slate-800">R.U.C.: {invoice.issuerRuc || "S/RUC"}</p>
+              <p className="text-[9px] font-semibold text-slate-400 mt-0.5">{invoice.issuerAddress || "CIUDAD DE PANAMÁ"}</p>
+              <p className="text-[9px] font-bold text-slate-100">R.U.C.: {invoice.issuerRuc || "S/RUC"}</p>
               <p className="text-[8px] text-slate-500 mt-0.5">------------------------------------------</p>
               <p className="font-semibold text-slate-705">COMPROBANTE AUXILIAR DE FACTURA</p>
               <p className="font-bold">NRO FACTURA: {invoice.invoiceNumber}</p>
@@ -173,7 +173,7 @@ export default function TicketDetailView({
               <p className="text-[8px] text-slate-550">------------------------------------------</p>
             </div>
 
-            <div className="space-y-1 my-3 select-text text-slate-800">
+            <div className="space-y-1 my-3 select-text text-slate-100">
               <p className="flex justify-between text-[10px]"><span>FECHA:</span> <span>{invoice.date}</span></p>
               <p className="flex justify-between text-[10px]"><span>VENDEDOR:</span> <span>{(invoice.seller || "VICTOR CRUZ").toUpperCase()}</span></p>
               <p className="flex justify-between text-[10px]"><span>MÉTODO:</span> <span>{(invoice.paymentMethod || "EFECTIVO").toUpperCase()}</span></p>
@@ -188,10 +188,10 @@ export default function TicketDetailView({
               {invoice.items && invoice.items.length > 0 ? (
                 invoice.items.map((item, idx) => (
                   <div key={idx} className="space-y-0.5 text-xs text-slate-905">
-                    <p className="truncate max-w-[280px] text-slate-800">{item.name.toUpperCase()}</p>
+                    <p className="truncate max-w-[280px] text-slate-100">{item.name.toUpperCase()}</p>
                     <div className="flex justify-between text-[10px] pl-2 text-slate-500 font-normal">
                       <span>{item.quantity} x ${item.price.toFixed(2)}</span>
-                      <span className="font-mono text-slate-700 font-bold">${(item.total || (item.quantity * item.price)).toFixed(2)}</span>
+                      <span className="font-mono text-slate-300 font-bold">${(item.total || (item.quantity * item.price)).toFixed(2)}</span>
                     </div>
                   </div>
                 ))
@@ -204,15 +204,15 @@ export default function TicketDetailView({
 
             {/* TOTALS */}
             <div className="space-y-1 text-right my-3 pr-1 select-text">
-              <p className="flex justify-between text-[10px] text-slate-600 font-semibold">
+              <p className="flex justify-between text-[10px] text-slate-400 font-semibold">
                 <span>SUBTOTAL:</span> 
                 <span>${(invoice.subtotal || (invoice.total - invoice.tax)).toFixed(2)}</span>
               </p>
-              <p className="flex justify-between text-[10px] text-slate-600 font-bold">
+              <p className="flex justify-between text-[10px] text-slate-400 font-bold">
                 <span>ITBMS RET (7%):</span> 
                 <span>${(invoice.tax || 0).toFixed(2)}</span>
               </p>
-              <p className="flex justify-between text-[11px] font-black border-t border-dashed border-slate-300 pt-1 text-slate-900 leading-none">
+              <p className="flex justify-between text-[11px] font-black border-t border-dashed border-slate-300 pt-1 text-white leading-none">
                 <span>TOTAL A PAGAR:</span> 
                 <span className="text-xs font-extrabold font-mono">${(invoice.total || 0).toFixed(2)}</span>
               </p>
@@ -224,7 +224,7 @@ export default function TicketDetailView({
             <div className="flex flex-col items-center justify-center p-2.5 space-y-1">
               {invoice.qrUrl ? (
                 <div className="p-1 border border-slate-300 rounded bg-white w-14 h-14 flex items-center justify-center select-none shrink-0 cursor-pointer" title="Haga clic para validar">
-                  <QrCode className="h-10 w-10 text-slate-800" />
+                  <QrCode className="h-10 w-10 text-slate-100" />
                 </div>
               ) : (
                 <div className="p-1 border border-slate-300 rounded bg-white w-12 h-12 flex items-center justify-center select-none shrink-0">
@@ -245,7 +245,7 @@ export default function TicketDetailView({
       </div>
 
       {/* BOTONES ACCION EDIT/DELETE */}
-      <div className="flex justify-between items-center pt-5 border-t border-slate-150 gap-3">
+      <div className="flex justify-between items-center pt-5 border-t border-blue-900/25 gap-3">
         <button
           onClick={() => invoice.id && onDelete(invoice.id)}
           className="flex items-center gap-1 px-4 py-2 hover:bg-red-50 text-red-600 rounded-lg text-xs font-bold transition cursor-pointer"

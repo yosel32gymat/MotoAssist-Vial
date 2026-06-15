@@ -5,32 +5,236 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* === PALETA NAVY DARK PROFESSIONAL === */
+  --navy-950: #010810;
+  --navy-900: #020d1e;
+  --navy-800: #041228;
+  --navy-700: #061a38;
+  --navy-600: #0a2348;
+  --navy-500: #0d2d5e;
+  --navy-400: #1a3f7a;
+  --blue-accent: #1e6fff;
+  --blue-bright: #3b8bff;
+  --blue-glow: #60a5fa;
+  --gold-accent: #FFB300;
 }
 
+/* ============================================================
+   ROOT – fondo global navy profundo con gradiente sutil
+   ============================================================ */
+:root {
+  --bg-base:        #010810;
+  --bg-surface:     rgba(4, 18, 40, 0.72);
+  --bg-elevated:    rgba(6, 26, 56, 0.80);
+  --border-dim:     rgba(30, 111, 255, 0.12);
+  --border-bright:  rgba(30, 111, 255, 0.30);
+  --text-primary:   #e8f0ff;
+  --text-secondary: #7ca4d8;
+  --text-muted:     #4a6a9a;
+  --blue-accent:    #1e6fff;
+  --blue-bright:    #3b8bff;
+  --gold:           #FFB300;
+}
+
+/* ============================================================
+   GLASS COMPONENTS – system redesign
+   ============================================================ */
 @layer utilities {
-  /* Glassmorphism custom components */
+
   .glass-panel {
-    background: rgba(13, 25, 48, 0.45);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, rgba(6,26,56,0.65) 0%, rgba(4,14,36,0.75) 100%);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(30, 111, 255, 0.15);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.04);
   }
 
   .glass-card {
-    background: rgba(15, 30, 60, 0.55);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    background: linear-gradient(145deg, rgba(8,30,66,0.70) 0%, rgba(2,12,28,0.80) 100%);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(30, 111, 255, 0.18);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(59,139,255,0.08);
+  }
+
+  .glass-card-hover {
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(30, 111, 255, 0.35);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(30,111,255,0.2);
+    transform: translateY(-1px);
   }
 
   .glass-input {
-    background: rgba(10, 18, 38, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background: rgba(2, 10, 28, 0.75);
+    border: 1px solid rgba(30, 111, 255, 0.20);
+    color: #e8f0ff;
   }
-
+  .glass-input::placeholder { color: rgba(124, 164, 216, 0.5); }
   .glass-input:focus {
-    border-color: rgba(59, 130, 246, 0.6);
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+    border-color: rgba(30, 111, 255, 0.60);
+    box-shadow: 0 0 0 3px rgba(30, 111, 255, 0.15);
     outline: none;
   }
+
+  /* Glow azul para botones primarios */
+  .btn-navy-primary {
+    background: linear-gradient(135deg, #1e6fff 0%, #0a4fd4 100%);
+    border: 1px solid rgba(59,139,255,0.4);
+    box-shadow: 0 4px 16px rgba(30,111,255,0.35);
+    color: #fff;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .btn-navy-primary:hover {
+    box-shadow: 0 6px 28px rgba(30,111,255,0.55);
+    transform: translateY(-1px);
+  }
+
+  /* Badge de estado */
+  .badge-navy {
+    background: rgba(30,111,255,0.12);
+    border: 1px solid rgba(30,111,255,0.25);
+    color: #60a5fa;
+  }
+
+  /* Scrollbar elegante */
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; height: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(30,111,255,0.25); border-radius: 2px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: rgba(30,111,255,0.45); }
+}
+
+/* ============================================================
+   GLOBAL OVERRIDES – convertir todos los fondos blancos/grises
+   al sistema navy dark + glass
+   ============================================================ */
+
+/* Fondo raíz de la app */
+body {
+  background: radial-gradient(ellipse at 20% 10%, rgba(10,35,72,0.6) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 90%, rgba(5,18,45,0.5) 0%, transparent 55%),
+              linear-gradient(160deg, #010c1f 0%, #020913 50%, #000608 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+}
+
+/* === PANELES BLANCOS → GLASS NAVY === */
+.bg-white {
+  background: linear-gradient(145deg, rgba(8,30,66,0.70) 0%, rgba(2,12,28,0.80) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-color: rgba(30,111,255,0.15) !important;
+}
+
+/* Textos oscuros sobre fondos blancos → textos claros */
+.text-slate-800, .text-slate-900, .text-slate-700 {
+  color: var(--text-primary) !important;
+}
+.text-slate-600, .text-slate-500 { color: var(--text-secondary) !important; }
+.text-slate-400 { color: var(--text-muted) !important; }
+
+/* Bordes grises → bordes navy */
+.border-slate-200, .border-slate-100, .border-slate-150 {
+  border-color: rgba(30,111,255,0.14) !important;
+}
+.border-slate-300 { border-color: rgba(30,111,255,0.20) !important; }
+
+/* Fondos grises claros → navy */
+.bg-slate-50, .bg-slate-100 {
+  background: rgba(4,14,36,0.60) !important;
+}
+.bg-slate-50\/50 {
+  background: rgba(4,14,36,0.35) !important;
+}
+
+/* Blue highlights: mantener pero ajustar */
+.bg-blue-50, .bg-blue-50\/50 {
+  background: rgba(30,111,255,0.08) !important;
+}
+.border-blue-105, .border-blue-100 {
+  border-color: rgba(30,111,255,0.20) !important;
+}
+.text-blue-700 { color: #60a5fa !important; }
+.text-blue-600 { color: #3b8bff !important; }
+
+/* Amber/warning mantener */
+.bg-amber-100 { background: rgba(255,179,0,0.12) !important; }
+.text-amber-700 { color: #FFB300 !important; }
+.border-amber-300 { border-color: rgba(255,179,0,0.30) !important; }
+
+/* Modales */
+.fixed .bg-white,
+[class*="modal"] .bg-white {
+  background: linear-gradient(145deg, rgba(6,22,52,0.96) 0%, rgba(2,10,26,0.98) 100%) !important;
+  border: 1px solid rgba(30,111,255,0.25) !important;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(30,111,255,0.1) !important;
+}
+
+/* Selección de items */
+.bg-blue-105 { background: rgba(30,111,255,0.14) !important; }
+
+/* Inputs y selects */
+input, select, textarea {
+  background: rgba(2,10,28,0.75) !important;
+  border-color: rgba(30,111,255,0.20) !important;
+  color: #e8f0ff !important;
+}
+input::placeholder, textarea::placeholder { color: rgba(124,164,216,0.45) !important; }
+input:focus, select:focus, textarea:focus {
+  border-color: rgba(30,111,255,0.55) !important;
+  box-shadow: 0 0 0 3px rgba(30,111,255,0.12) !important;
+  outline: none !important;
+}
+
+/* Botones secundarios blancos */
+.bg-white.border.border-slate-200,
+button.bg-white {
+  background: rgba(6,22,52,0.65) !important;
+  border-color: rgba(30,111,255,0.22) !important;
+  color: #e8f0ff !important;
+}
+
+/* Hover estados */
+.hover\:bg-slate-50:hover, .hover\:bg-slate-100\/70:hover {
+  background: rgba(30,111,255,0.08) !important;
+}
+
+/* Animaciones de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeIn 0.35s ease-out both; }
+
+/* Shimmer para accents */
+@keyframes navyShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.navy-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(30,111,255,0.3) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: navyShimmer 2.5s ease-in-out infinite;
+}
+
+/* Efecto glowing border para cards activos */
+.glow-border-blue {
+  box-shadow: 0 0 0 1px rgba(30,111,255,0.4), 0 8px 32px rgba(30,111,255,0.2);
+}
+
+/* Línea decorativa superior para el sidebar */
+aside::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #1e6fff, #60a5fa, #1e6fff, transparent);
+  opacity: 0.7;
+}
+
+/* Separadores con glow */
+hr, .border-b, .border-t {
+  border-color: rgba(30,111,255,0.10) !important;
 }
